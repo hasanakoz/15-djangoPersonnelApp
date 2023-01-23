@@ -8,10 +8,11 @@ from .models import Profile
 from .permissions import IsOwnerOrStaff
 from rest_framework.permissions import IsAuthenticated
 
+
 class RegisterAPI(CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
-    
+
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -21,10 +22,9 @@ class RegisterAPI(CreateAPIView):
         data["key"] = token.key
         headers = self.get_success_headers(serializer.data)
         return Response(data, status=status.HTTP_201_CREATED, headers=headers)
-    
+
 
 class ProfileUpdateView(RetrieveUpdateAPIView):
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
     permission_classes = [IsOwnerOrStaff, IsAuthenticated]
-    

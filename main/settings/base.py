@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #my app
+    # my app
     'rest_framework',
     'drf_yasg',
     'rest_framework.authtoken',
@@ -148,9 +148,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # mimetypes.add_type("application/javascript", ".js", True)
 LOGGING = {
-    "version": 1, # is set to True then all loggers from the default configuration will be disabled.
+    # is set to True then all loggers from the default configuration will be disabled.
+    "version": 1,
     "disable_existing_loggers": True,
-    # Formatters describe the exact format of that text of a log record. 
+    # Formatters describe the exact format of that text of a log record.
     "formatters": {
         "standard": {
             "format": "[%(levelname)s] %(asctime)s %(name)s: %(message)s"
@@ -165,11 +166,11 @@ LOGGING = {
         },
     },
     # The handler is the engine that determines what happens to each message in a logger.
-    # It describes a particular logging behavior, such as writing a message to the screen, 
+    # It describes a particular logging behavior, such as writing a message to the screen,
     # to a file, or to a network socket.
     "handlers": {
         "console": {
-            "class": "logging.StreamHandler","formatter": "standard",
+            "class": "logging.StreamHandler", "formatter": "standard",
             "level": "INFO",
             "stream": "ext://sys.stdout",
         },
@@ -179,24 +180,24 @@ LOGGING = {
             'filename': './debug.log',
             'level': 'INFO',
         },
- },
- # A logger is the entry point into the logging system.
+    },
+    # A logger is the entry point into the logging system.
     "loggers": {
         "django": {
-            "handlers": ["console", 'file'], 
-            # log level describes the severity of the messages that the logger will handle. 
+            "handlers": ["console", 'file'],
+            # log level describes the severity of the messages that the logger will handle.
             "level": config("DJANGO_LOG_LEVEL", "INFO"),
             'propagate': True,
 
-            # istersem 
+            # istersem
             # DJANGO_LOG_LEVEL=ERROR şeklinde .envde ekleyebilirim
-            
-            # If False, this means that log messages written to django.request 
+
+            # If False, this means that log messages written to django.request
             #  will not be handled by the django logger.
         },
     },
 }
-# handlers iki farklı handler işlemi yapan loji kuran 
+# handlers iki farklı handler işlemi yapan loji kuran
 
 
 REST_FRAMEWORK = {
@@ -207,7 +208,7 @@ REST_FRAMEWORK = {
 
 REST_AUTH_SERIALIZERS = {
     'TOKEN_SERIALIZER': 'users.serializers.CustomTokenSerializer',
-    
+
 }
 
 # AUTH_USER_MODEL = 'users.MyUser'
